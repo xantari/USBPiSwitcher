@@ -1,0 +1,18 @@
+[Unit]
+Description=GPIO Switch Controller FastAPI Service
+After=network.target
+
+[Service]
+Type=simple
+# Replace with the user that should run the service
+User=<your-username>
+# Project directory (update if different)
+WorkingDirectory=/home/<your-username>/Documents
+ExecStart=/home/<your-username>/Documents/.venv/bin/uvicorn gpio_switch_fastapi:app --host 0.0.0.0 --port 8000
+# Optional API key file (update path if project directory differs)
+EnvironmentFile=-/home/<your-username>/Documents/.env.gpio
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
