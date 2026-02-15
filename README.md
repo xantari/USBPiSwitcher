@@ -27,6 +27,27 @@ These pins have no conflicts with common peripherals (I2C, SPI, UART) and are sa
 
 **How it works:** The GPIO pin controls a relay that simulates a manual button press on the UGREEN switch, causing it to toggle between connected PCs/devices.
 
+## Use Case: Software-Based KVM Solution
+
+This project is designed to enable a complete software-based KVM (Keyboard, Video, Mouse) solution by combining monitor switching with USB peripheral switching:
+
+**Monitor Switching** ([SwitchMonitors](https://github.com/xantari/SwitchMonitors))  
+- Uses DDC/CI commands to switch monitor input sources
+- Programmatically controls which computer your monitors display
+- No physical monitor button pressing required
+
+**USB Peripheral Switching**  (This Repository)
+- Integrates with a Raspberry Pi Zero HTTP API to control a USB switch
+- Switches keyboard, mouse, and other USB peripherals between computers
+- Controlled via simple HTTP requests to the Pi Zero
+
+**Combined Workflow:**
+When you want to switch between computers, a single command can:
+1. Switch all monitor inputs to the target computer (using this SwitchMonitors script in Repo listed above)
+2. Switch USB peripherals to the target computer (via Pi Zero API call using this project repository)
+
+This creates a seamless, software-controlled KVM experience without expensive KVM hardware, perfect for multi-PC setups where you want to share monitors and peripherals between work and personal computers, or between desktop and laptop systems.
+
 ## Parts List
 
 | Item | Product | Price (as of Feb 2026) | Link |
